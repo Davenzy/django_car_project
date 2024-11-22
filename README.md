@@ -11,7 +11,7 @@
 
    ```python -m venv venv
    source venv/bin/activate  # Для Linux/Mac
-   venv\Scripts\activate     # Для Windows```
+   venv\Scripts\activate     # Для Windows
 
 4. Установите зависимости:
 
@@ -21,7 +21,7 @@
 1. Выполните миграцию базы данных:
 
    ```python manage.py makemigrations
-   python manage.py migrate```
+   python manage.py migrate
 
 1. Запустите сервер разработки:
 
@@ -43,13 +43,13 @@
   ```{
       "username": "newusername",
       "password": "strongpassword"
-  }```
+  }
 
 - Ответ:
 
   ```{
       "auth_token": "your_generated_token"
-  }```
+  }
 
 ### Удаление токена пользователя
 - URL: /api/token/logout/
@@ -65,7 +65,7 @@
 
   ```{
       "auth_token": "your_generated_token"
-  }```
+  }
 
 > [!WARNING]
 > Предупреждение: Для использования API вам потребуется передавать ваш token в headers в следующем формате: ```{"Authorization": "Token {your_token}"}```
@@ -85,7 +85,7 @@
           ...
       },
       ...
-  ] ```
+  ]
 
 ### Получение информации о конкретном автомобиле
 - URL: /api/cars/{car_id}/
@@ -100,7 +100,7 @@
       "model": "Camry",
       "year": 2020,
       ...
-  } ```
+  }
 
 ### Создание нового автомобиля
 - URL: /api/cars/
@@ -113,7 +113,7 @@
       "model": "Civic",
       "year": 2022,
       ...
-  } ```
+  }
 
 - Ответ:
 
@@ -123,7 +123,7 @@
       "model": "Civic",
       "year": 2022,
       ...
-  } ```
+  }
 
 ### Обновление информации о автомобиле
 - URL: /api/cars/{car_id}/
@@ -136,7 +136,7 @@
       "model": "Accord",
       "year": 2021,
       ...
-  } ```
+  }
 
 - Ответ:
 
