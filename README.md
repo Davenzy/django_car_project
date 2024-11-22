@@ -67,8 +67,8 @@
       "auth_token": "your_generated_token"
   }```
 
-> [!Предупреждение:]
->  Для использования API вам потребуется передавать ваш token в headers в следующем формате: ```{"Authorization": "Token {your_token}"}```
+> [!WARNING]
+> Предупреждение: Для использования API вам потребуется передавать ваш token в headers в следующем формате: ```{"Authorization": "Token {your_token}"}```
 
 ### Получение списка автомобилей
 - URL: /api/cars/
