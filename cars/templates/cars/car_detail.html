@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div class="car-detail">
+        <h2>Информация о машине</h2>
+        <p><strong>Марка:</strong> {{ car.make }}</p>                                                                       <!-- Поля с нформацией о машине -->
+        <p><strong>Модель:</strong> {{ car.model }}</p>
+        <p><strong>Год выпуска:</strong> {{ car.year }}</p>
+        <p><strong>Владелец:</strong> {{ car.owner_id }}</p>
+        <p><strong>Описание:</strong> {{ car.description }}</p>
+        {% for comment in comments%}                                                                                        <!-- Пробегаемся по всем коментариям и выводим их-->
+            <p><strong>Комментарий от {{ comment.user }} в {{ comment.created_at }}:</strong> {{ comment.content }}</p>
+        {% endfor %}
+        <a href="{% url 'cars:car_list' %}">Вернуться к списку машин</a>                                                                                    <!-- Проверим аутентифицирован ли пользователь -->
+            {% if user == car.owner_id or user.is_superuser or user.is_staff %}                                          <!-- Если пользователь Владелец машины или является сотрудником или админом выведем меню для взяимодействия с машиной -->
+                <a href="{% url 'cars:car_edit' car.id %}">изменить данные</a>
+                <a href="{% url 'cars:car_delete' car.id %}">Удалить машину</a>
+            {% endif %}
+        {% if user.is_authenticated %}  
+            <a href="{% url 'cars:add_comment' car.id %}">Добавить комментарий машину</a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Подключение стилей если необходимо -->
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'cars:car_list' %}">Главная</a></li>
+                {% if user.is_authenticated %}                                          <!-- Проверяем, авторизован ли пользователь и отображаем в header нужные меню -->
+                    <li><a href="{% url 'cars:car_create' %}">Добавить машину</a></li>  
+                    <li><a href="{% url 'users:profile' %}">Личный кабинет</a></li>
+                    <li><a href="{% url 'users:logout' %}">Выйти</a></li>
+                {% else %}                                                              <!-- Если пользователь не авторизован в header отображаем меню регистрации и войти -->
+                    <li><a href="{% url 'users:login' %}">Войти</a></li>
+                    <li><a href="{% url 'users:registration' %}">Регистрация</a></li>
+                {% endif %}
+                {% if user.is_superuser or user.is_staff %}                             <!-- Если пользователь администратор выведем меню админ-панели -->
+                    <li><a href="{% url 'admin:index' %}">Админ-панель</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block main %}{% endblock %}                                                  <!-- Обозначаем где будет блок -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Машинки.com</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h2>Доступные машины</h2>
+    <ul>
+        {% for car in cars %}
+            <li>
+                <a href="{% url 'cars:car_detail' car.id %}">{{ car.make }} {{ car.model }}</a>     <!-- Название марки авто делаем кликабельным, что бы можно было зайти и посмотреть детали авто -->
+                <p>{{ car.description }}</p>                                                        <!-- Описание -->
+                <p>Добавил: {{ car.owner.username }}, {{ car.created_at }}</p>                      <!-- Кто добавил авто и когда -->
+            </li>
+        {% empty %}
+            <li>Нет доступных машин.</li>                                                           <!-- если авто нет -->
+        {% endfor %}
+    </ul>
+{% endblock %}

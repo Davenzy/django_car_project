@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div class="car-form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="small mb-1" for="{{ form.content.id_for_label }}">Текст комментария:</label>
+                {{ form.content }}
+            <button type="submit">{{ title }}</button>
+        </form>
+        <a href="{% url 'cars:car_list' %}">Вернуться к списку машин</a>
+    </div>
+{% endblock %}
